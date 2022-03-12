@@ -9,9 +9,20 @@
   "author": "SG",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+  "express": "^4.17.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shyamal2411/node-lessons.git"
+  },
+  "keywords": [
+    "node-lessons"
+  ],
+  "bugs": {
+    "url": "https://github.com/shyamal2411/node-lessons/issues"
+  },
+  "homepage": "https://github.com/shyamal2411/node-lessons#readme"
 }
