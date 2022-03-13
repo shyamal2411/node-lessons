@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" href="./logo.svg" type="image/png">
+    <title>Crazy Heads</title>
+<!-- <link rel="stylesheet" href="styles.css"/> -->
+</head>
+<style>
+    *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+
+}
+
+nav{
+    height: 80px;
+    background: #C5E300;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem calc(100vw- 1300px)/2;
+}
+.logo{
+    color: #000000;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: inherit;
+    padding: 0 2rem;
+}
+nav a{
+    text-decoration: none;
+    color: #000000;
+    padding:0 1.5rem;
+}
+
+nav a:hover{
+    color: #ffff;
+
+}
+.hero{
+    background: #C5E300;
+}
+.hero-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    height: 95vh;
+    padding: 3rem calc(100vw-1300px)/2;
+}
+.column-left
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color:#000000;
+    padding: 0 3rem;
+}
+.h1{
+
+    padding:  0.5rem;
+    align-items: flex-start;
+}
+.column-right{
+    margin-bottom: 1rem;
+    font-size: 3rem;
+}
+.column-left p{
+      margin-bottom: 5rem;
+      font-size: 1.5rem;
+      line-height: 2;
+}
+button{
+    padding:1rem 3rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    border: none;
+    color: #C5E300;
+    background: #000000;
+    cursor: pointer;
+
+}
+
+button:hover{
+    background: #ffff;
+    color: #000000;
+}
+.column-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 2rem;
+}
+
+.hero-image{
+    width: 70%;
+    height: 60%;
+}
+
+@media screen and (max-width:760px)
+{
+    .hero-container{
+        grid-template-columns: 1fr;
+
+    }
+
+}
+</style>
+<body>
+    <nav>
+        <div class="logo" >Crazy Heads</div>
+        <div class="nav-items">
+            <a href="/">HOME</a>
+            <a href="/">ABOUT</a>
+            <a href="/">CONTACT</a>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-container">
+        <div class="column-left">
+            <h1 class="h1"> Send the limited mesages and not contracts and fees for the customers only.</h1>
+            <button>Get Started!</button>
+        </div>
+        <div class="column-right">
+            <img src="./image.svg" alt="Illustration" class="hero-image"> 
+        </div>
+        </div>
+    </section>
+</body>
+</html>
