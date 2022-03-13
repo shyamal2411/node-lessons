@@ -18,7 +18,8 @@ app.get('/admin', (req, res) => {
 
 app.get('/profile/:name', function(req, res) {
     // res.send('You are at the profile page ' + req.params.id);
-    res.render('profile', {person: req.params.name});
+    var data = {age: 29, job: 'ninja', hobbies: ['Code', 'Code', 'Code']};
+    res.render('profile', {person: req.params.name, data: data});
 });
 
 

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    </link>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <title>Report Card</title>
+</head>
+<style>
+    body{
+  margin: 0px;
+  padding: 0px;
+  width: 100vw;
+  height: 100vh;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  background-color: #130f40;
+  font-family: 'Lato' !important;
+}
+
+.heading{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    color: black;
+}
+ .heading2{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    color: rgb(255, 27, 27);
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: rgb(52,58,64);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+    /* height: 21em; */
+    /* bottom: 20%;
+    right: 20%; */
+  /* height:22em; */
+  /* top:30%; */
+  /* height: 2em; */
+  /* width: 50%; */
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 90%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: rgb(31,33,32);
+  background-color: rgb(31,33,32);
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#tableContents{
+  font-family: 'Lato', sans-serif;
+  
+  position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+th,
+td {
+  text-decoration: underline;
+	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	/* color: rgb(22, 71, 67); */
+}
+
+th {
+	text-align: left;
+}
+
+
+table{
+    border-radius: 10px;
+    margin-top: 100px;
+    border-spacing: 50px;
+    width: 800px;
+  	border-collapse: collapse;
+	  overflow: hidden;
+}
+
+</style>
+<body>
+    <!-- Design reference: https://www.students.gtu.ac.in/ -->
+    <h1 class="heading">GUJARAT TECHNOLOGICAL UNIVERSITY</h1>
+    <h2 class="heading2">GRADE HISTORY OF <%=person %></h2>
+        <p align="left"><strong>Age: </strong><%= data.age %></p><br/>
+        <p align="center"><strong>Job: </strong><%= data.job %></p><br/>
+        <h2>Hobbies</h2>
+        <ul>            
+            <% data.hobbies.forEach(function(hobby){ %>
+                <li><%= hobby %></li>            
+            <% }); %>
+        </ul>
+        <!-- <p><strong>Age</strong><%=data.age%></p><br/> -->
+    <div class="wrap">
+        <div class="search">
+            <input type="text" class="searchTerm" placeholder="Enter Enrolment Number" id="Search" />
+            <button type="submit" class="searchButton" onclick="getEr();">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+    <table id="tableContents">
+        <tr>
+            <td>NAME</td>
+            <td>ENROLLMENT-NO.</td>
+            <td>BRANCH</td>
+            <td>SUBJECT</td>
+            <td>GRADE</td>
+            <td>SEMESTER</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <script>
+        
+// Dictionary JSON of 10 students
+
+let Dictionary = [{
+        Sem: 1,
+        Branch: "Computer Engineering",
+        Name: "Shyamal",
+        Err: 190010107055,
+        Sub: "DSA",
+        Marks: "9.24"
+    },
+    {
+        Sem: 2,
+        Branch: "Automobile",
+        Name: "Manav",
+        Err: 190010107070,
+        Sub: "ADA",
+        Marks: 8.91
+    },
+    {
+        Sem: 3,
+        Branch: "Information Technology",
+        Name: "Drashti",
+        Err: 190010107024,
+        Sub: "Web Dev",
+        Marks: 9.80
+    },
+    {
+        Sem: 4,
+        Branch: "Computer Engineering",
+        Name: "Vrushti",
+        Err: 190010107064,
+        Sub: "Data Science",
+        Marks: 10.00
+    },
+    {
+        Sem: 5,
+        Branch: "Information Technology",
+        Name: "Nensi",
+        Err: 190010107089,
+        Sub: "Python",
+        Marks: 8.51
+    },
+    {
+        Sem: 6,
+        Branch: "Information Technology",
+        Name: "Henil",
+        Err: 190010107079,
+        Sub: "Web Dev",
+        Marks: 9.00
+    },
+    {
+        Sem: 7,
+        Branch: "Information Technology",
+        Name: "Radha",
+        Err: 190010107012,
+        Sub: "AI",
+        Marks: 7.15
+    },
+    {
+        Sem: 8,
+        Branch: "Automobile",
+        Name: "Khushi",
+        Err: 190010107088,
+        Sub: "Advance Java",
+        Marks: 6.86
+    },
+    {
+        Sem: 4,
+        Branch: "Information Technology",
+        Name: "Karan",
+        Err: 190010107054,
+        Sub: "Git-GitHub",
+        Marks: 7.23
+    },
+    {
+        Sem: 2,
+        Branch: "Computer Engineering",
+        Name: "Harsh",
+        Err: 190010107042,
+        Sub: "Competitive Programming",
+        Marks: 9.52
+    }
+];
+
+let table = document.getElementById("Search");
+
+
+function getEr() {
+// console.log(Dictionary);
+    let findEle = table.value; // get the value of the input
+    for (let i = 0; i < Dictionary.length; i++) {
+
+        // finding in dictionary based on the enrolment number, so converting ER into string
+        // when element found, display whole data of that index
+        if (Dictionary[i].Err.toString() === findEle) {
+            document.getElementById("tableContents").rows[1].cells[0].innerHTML = Dictionary[i].Name;
+            document.getElementById("tableContents").rows[1].cells[1].innerHTML = Dictionary[i].Err;
+            document.getElementById("tableContents").rows[1].cells[2].innerHTML = Dictionary[i].Branch;
+            document.getElementById("tableContents").rows[1].cells[3].innerHTML = Dictionary[i].Sub;
+            document.getElementById("tableContents").rows[1].cells[4].innerHTML = Dictionary[i].Marks;
+            document.getElementById("tableContents").rows[1].cells[5].innerHTML = Dictionary[i].Sem;
+            break;
+        }
+    }
+}
+// Uncaught TypeError: can't access property "toString", Dictionary[i].er is undefined
+    </script>
+</body>
+
+</html>
